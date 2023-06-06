@@ -1,6 +1,14 @@
 <script>
 	
+	$:  count = 5
 	
+	/**
+     * @param {{ preventDefault: () => void; } | undefined} [e]
+     */
+	function increment(e){
+		e.preventDefault()
+		count += 1
+	}
 </script>
 
 <svelte:head>
@@ -9,7 +17,9 @@
 </svelte:head>
 
 <section>
+   HELLO + {count} 
 
+   <button on:click={e => increment(e)}>increment</button>
 </section>
 
 
