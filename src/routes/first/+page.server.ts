@@ -3,8 +3,8 @@ import type { PageServerLoad,  } from "./$types";
 
 
 export const load: PageServerLoad = async () => {
-   
-        const response =await fetch('http://localhost:8080/all',{
+        console.log(import.meta.env.VITE_API_URL)
+        const response =await fetch(`${import.meta.env.VITE_API_URL}/api/all`,{
                     method:'GET',               
         });
 
