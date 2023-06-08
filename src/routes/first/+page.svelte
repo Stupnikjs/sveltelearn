@@ -18,7 +18,7 @@
     import "@fontsource/montserrat"
 
     interface dataResp {
-       data: course[] 
+       courses: course[] 
     }
 
         
@@ -31,7 +31,7 @@
 
     export let data:dataResp 
 
-    export let dates = data.data.map((el:course) => {return new Date(el.date)})
+    export let dates = data.courses.map((el:course) => {return new Date(el.date)})
 
     $: nomfilter = ""; 
     $: departement = 0; 
@@ -104,11 +104,11 @@
             <DateComponent date={date}></DateComponent>
             <div class="flex m-10 flex-wrap ">
                 {#if selected ===  "nom"}
-                    {#each removeDuplicate(data.data.filter( el => new Date(el.date).toString() === date.toString()).filter( el => el.nom.includes(nomfilter))) as course}
+                    {#each removeDuplicate(data.courses.filter( el => new Date(el.date).toString() === date.toString()).filter( el => el.nom.includes(nomfilter))) as course}
                     <CourseComponent course={course}></CourseComponent>
                     {/each}
                 {:else} 
-                    {#each removeDuplicate(data.data.filter( el => new Date(el.date).toString() === date.toString()).filter( el => el.departement === departement )) as course}
+                    {#each removeDuplicate(data.courses.filter( el => new Date(el.date).toString() === date.toString()).filter( el => el.departement === departement )) as course}
                     <CourseComponent course={course}></CourseComponent>
                     {/each}
                 {/if}
