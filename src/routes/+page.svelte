@@ -48,7 +48,16 @@
         
     }
 
-    function filterCourses<T>(selected:string , params:string){
+    function setParam(e){
+        switch (e.target.name){
+            case "dep": departement = parseInt(e.target.value)
+            case "nom": nom = e.target.value
+            case "date" date = e.target.value 
+            
+            }
+        }
+
+    function filterCourses<T>(selected:string){
        
         
         switch(selected ){
@@ -59,12 +68,7 @@
         }
     }
 
-    function setParams(e){
-        if (e.target.name === "dep") departement = parseInt(e.target.value) 
-        if (e.target.name === "date") date = new Date(e.target.value).toLocaleString()
-        else nom = e.target.value   
-       
-    }
+    
     
  </script>
  
@@ -97,13 +101,13 @@
             <div>
                 {#if selected === "departement"}
                     <label for="dep"> Selection le departement </label>
-                    <input type="number" name="dep" on:change={e => setParams(e)}>
+                    <input type="number" name="dep" on:change={e => setParam(e)}>
                 {:else if selected === "nom"}
                     <label for="nom"> Selectione le nom </label>
-                    <input name="nom" type="text" on:change={e => setParams(e)}>
+                    <input name="nom" type="text" on:change={e => setParam(e)}>
                 {:else if selected === "date"}
                     <label for="date">Selectione la date </label>
-                    <input name="date" type="date" on:change={e => setParams(e)}>
+                    <input name="date" type="date" on:change={e => setParam(e)}>
                 
                 {/if}
 
