@@ -39,7 +39,7 @@
     $: date = ""; 
     $: nom = ""; 
     $: departement = 0; 
-    $: filteredCourse = filterCourses(selected, params);   
+    $: filteredCourse = data.courses.filterByDate().filterByNom().filterByDepartement();   
      
    
    
