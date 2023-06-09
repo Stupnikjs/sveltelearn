@@ -8,8 +8,8 @@ export const load: PageServerLoad = async () => {
                     method:'GET',               
         });
 
-        const data = await response.json();
-         const props = { data }       
-        return props ;
+        const courses = await response.json();
+            
+        return {courses} ;
          
 };
