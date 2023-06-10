@@ -19,6 +19,7 @@
         import type course from "../interface/course";
         import "@fontsource/montserrat"
         import "@fontsource/kreon"
+    import Footer from "./Footer.svelte";
     
         interface dataResp {
            courses: course[] 
@@ -216,7 +217,7 @@
                     {/each } 
                 {/if}
                </div>
-    
+               <Footer></Footer>
          </main>
    
      
