@@ -93,6 +93,8 @@
             }
     
         function filterCourses(selected:options){
+            filteredCourses = data.courses
+
             if (selected.nom){
                 filteredCourses = filteredCourses.filter((c:course) => c.nom.includes(date))
             }
@@ -126,17 +128,37 @@
         font-family: "Kreon", sans-serif;
      }
     
+     @media (width > 1000px) {
+
+        .media{
+            margin: 0 20%; 
+           
+
+        }
+      }
+     @media (width < 1000px){
+            .media-select{
+                width: max-content;
+
+                
+            }
+
+     }
+
     </style>
     
+
+    
+
    
-        <main class={"mx-20"}>
+        <main class="media">
             
-            <div class="bg-red-50 w-1/2 mx-auto p-2 my-5">
+            <div class="bg-red-50 w-1/2 mx-auto p-2 my-5 media-select">
                 <CheckBoxes setSelected={setSelected}></CheckBoxes>
-                <div class="bg-indigo-300 mx-auto flex flex-col m-5 w-2/3 kreon">
+                <div class="bg-indigo-300 mx-auto flex flex-col m-5 w-2/3 kreon media-select">
         
                     {#if selected.departement}
-                        <fieldset class="grid grid-cols-2 p-4">
+                        <fieldset class="grid grid-cols-2 p-4 media-select">
                             <label for="dep" > Departement </label>
                             <input type="number" name="dep" on:change={e => setParam(e)}>
                         </fieldset>
