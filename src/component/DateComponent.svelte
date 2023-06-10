@@ -12,6 +12,6 @@
     }
 </style>
 
-<div class=" flex justify-center items-center h-10 text-center bg-pink-50 font-black text-indigo-400 montserrat w-1/3 mx-auto">
+<div class=" flex justify-center items-center h-10 text-center bg-pink-50 font-black text-indigo-400 montserrat w-1/3 ">
     {date.toLocaleDateString()}
 </div>

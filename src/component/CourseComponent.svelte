@@ -9,10 +9,10 @@ export let course:course
    
        
         <div class="flex justify-center items-center">
-            <span class="whitespace-nowrap montserrat font-black">{course.lieu}</span>
-            <span class="ml-5 bg-gray-50 h-6 rounded px-3 fira font-black montserrat -top-5 -right-5 absolute">{course.departement}</span>
+            <span class="whitespace-nowrap kreon font-black">{course.lieu}</span>
+            <span class="ml-5 bg-gray-50 h-6 rounded px-3 fira font-black kreon -top-5 -right-5 absolute">{course.departement}</span>
         </div>
-        <span class="flex items-center justify-center min-h bg-blue-100 w-2/3 text-center fira ">{course.nom}</span>
+        <span class="flex items-center justify-center min-h bg-blue-100 w-2/3 text-center kreon ">{course.nom}</span>
         
         
         
@@ -30,8 +30,8 @@ export let course:course
     .fira{
         font-family: 'Fira Mono', monospace;
     }
-    .montserrat{
-        font-family: "Monserrat", sans-serif;
+    .kreon{
+        font-family: "Kreon", sans-serif;
     }
     .min-w-33{
        width: 18%;
