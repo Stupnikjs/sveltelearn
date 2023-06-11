@@ -19,20 +19,16 @@
         import type course from "../interface/course";
         import "@fontsource/montserrat"
         import "@fontsource/kreon"
-    import Footer from "./Footer.svelte";
+        import Footer from "./Footer.svelte";
+        import Paginate from "./Paginate.svelte";
+   
     
         interface dataResp {
            courses: course[] 
         }
     
             
-        function removeDuplicate<T>(arr:T[]){
-                if (arr.length === 0) return [];  
-                return arr.filter((el:T,index:number) => {
-                const json = JSON.stringify(el); 
-                return arr.findIndex((e) => JSON.stringify(e) === json) === index
-          })
-          }  
+     
        
         type options = {
             [key: string] : boolean
@@ -52,9 +48,9 @@
         $: date = ""; 
         $: nom = ""; 
         $: departement = 0; 
-        $: filteredCourses = data.courses   
-        $: dates = filteredCourses ? filteredCourses.map((el:course) => {return new Date(el.date)}): []   
-         
+        $: filteredCourses = data.courses.sort((a,b) => new Date(a.date).getTime() - new Date(b.date).getTime())   
+       
+        
        
         function setSelected(e:any){
            
@@ -97,7 +93,7 @@
             filteredCourses = data.courses
 
             if (selected.nom){
-                filteredCourses = filteredCourses.filter((c:course) => c.nom.includes(date))
+                filteredCourses = filteredCourses.filter((c:course) => c.nom.toLocaleLowerCase().includes(nom.toLowerCase()))
             }
     
             if (selected.departement){
@@ -109,7 +105,7 @@
                 filteredCourses = filteredCourses.filter((c:course) => c.date === date)
             }
             
-    
+          
         }
         function resetFiltered(){
             selected = {
@@ -117,10 +113,13 @@
                 date: false, 
                 departement: false,
             }
+            date = "";
+            nom = ""; 
+            departement = 0; 
             filteredCourses = data.courses
         }
     
-       
+        
         
      </script>
      
@@ -128,8 +127,9 @@
      .kreon{
         font-family: "Kreon", sans-serif;
      }
-    
+   
      @media (width > 1000px) {
+
 
         .media{
             margin: 0 20%; 
@@ -138,6 +138,7 @@
         }
       }
      @media (width < 1000px){
+          
             .media-select{
                 width: max-content;
 
@@ -154,7 +155,7 @@
    
         <main class="media">
             
-            <div class="bg-red-50 w-1/2 mx-auto p-2 my-5 media-select">
+            <div class=" w-1/2 mx-auto p-2 my-5 media-select">
                 <CheckBoxes setSelected={setSelected}></CheckBoxes>
                 <div class="bg-indigo-300 mx-auto flex flex-col m-5 w-2/3 kreon media-select">
         
@@ -195,29 +196,10 @@
             </div>
            
         
-            <div>
-                {#if data}
-            
-                {#each removeDuplicate(dates) as date }
-                <div>
-                    <DateComponent date={date}></DateComponent>
-    
-                    <div class="flex my-5 flex-wrap ">
-                       
-                        {#each removeDuplicate(filteredCourses.filter(el => new Date(el.date).toString() === date.toString())) as course}
-                            <CourseComponent course={course}></CourseComponent>
-                        {/each}
-                        
-                 
-            
-                    </div>
-                   
-                 
-                </div>
-                    {/each } 
-                {/if}
-               </div>
-               <Footer></Footer>
+           
+            <Paginate courses={filteredCourses}></Paginate>
+               
+            <Footer></Footer>
          </main>
    
      

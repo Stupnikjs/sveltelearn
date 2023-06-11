@@ -3,10 +3,20 @@
     
 </script>
 
+<style>
+    .kreon{
+       font-family: "Kreon", sans-serif;
+    }
+  
+</style>
 
-
-<div class="w-full bg-green-400">
-    Développé sur  <img src={icon} alt='svelte'>
-    Déployé sur Fly.io
+<div class="w-full bg-indigo-400 kreon border border-black border-4 flex justify-around h-56">
+   
+   <div class="flex items-center">
+        Développé avec  <img src={icon} alt='svelte' class="h-20">
+   </div> 
+   <div class="flex items-center" >
+        Déployé sur Fly.io
+   </div>
     
 </div>

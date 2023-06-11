@@ -29,10 +29,17 @@
  
 <style>
 
+.back {
+  background-image: url("../img/favicon.png") ;
+ 
+  
+}
 
+
+    
 </style>
 
-<div>
+<div class="back">
     <Header></Header>
     <CoursePage data={data}></CoursePage>
 </div>
