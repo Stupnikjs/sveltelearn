@@ -1,9 +1,9 @@
 <script>
-    import Image from "../img/running.jpg"
+
 </script>
 
 <header class="noborderbox media-h">
-    <div class="relative flex justify-center items-center ">   
+    <div class="relative flex justify-center items-center bg-blue-50 p-5">   
         <h1 class=" kreon text-5xl media media-text"> Trouvez un nouveau Challenge </h1>
     </div>
     
@@ -14,8 +14,9 @@
        font-family: "Kreon",sans-serif;
     }
     .media-h{
-                margin: 4vh;
-                height: 10vh;
+                margin: 2vh;
+                height: 20vh;
+                
             }
    
     @media (width < 900px) {
