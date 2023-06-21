@@ -9,18 +9,30 @@
     }
    
 
-    @media (width < 1000px){
-            .media-select{
-                width: max-content;
-                padding: 0;
+    @media (min-device-width < 1000px){
+            .media{
+                flex-direction: column;
             }
-
      }
 </style>
 
-<div class="h-1/5 flex flex-wrap flex-col justify-center items-center gap-5 bg-indigo-200 w-1/3 p-2 border border-blue-400 border-4 mx-auto my-5 kreon media-select">
+
+
+
+
+    <select name="filter" class="p-2 flex justify-center bg-blue-200 w-full" id="searchFilter" on:change={e => setSelected(e)}>
+        <option value=""  selected>choisissez votre filtre</option>
+        <option value="nom">nom</option>
+        <option value="dep">département</option>
+        <option value="date">date</option>
+    </select>
+
+
+
+<!--
+<div class="flex flex-wrap flex-col justify-center items-center gap-5  p-2 mx-auto  kreon">
     <p> Je recherche une course par </p> 
-    <div class="flex flex-col">
+    <div class="flex media gap-5">
         <fieldset class="flex items-center gap-2">
             <label class="flex-1" for="nom"> Nom </label>
             <input type="checkbox"  name="nom" on:change={e => { setSelected(e)}}>
@@ -36,5 +48,5 @@
     </div>  
     
    
-   
 </div>
+-->

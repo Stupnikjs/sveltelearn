@@ -10,19 +10,14 @@
 
  <script lang="ts">
     
-
     import CoursePage from "../component/CoursePage.svelte";
-     import Header from "../component/Header.svelte";
+    import Header from "../component/Header.svelte";
     import type course from "../interface/course";
     import "@fontsource/montserrat"
-    
-	
-	
-
+   
     interface dataResp {
        courses: course[] 
     }
-
 
     export let data:dataResp 
  </script>
@@ -31,15 +26,16 @@
 
 .back {
   background-image: url("../img/favicon.png") ;
- 
-  
+  min-height: 100vh;  
+
 }
+
 
 
     
 </style>
 
-<div class="back">
+<div class="back flex flex-col">
     <Header></Header>
     <CoursePage data={data}></CoursePage>
 </div>

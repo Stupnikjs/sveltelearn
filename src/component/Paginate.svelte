@@ -30,22 +30,30 @@ function setCurrentPage(e, index:number){
    
 </style>
 
-
-<div class="flex flex-col">
-    
-        {#each dates as date }
-                <DateComponent date={date}></DateComponent>
-                <div class="flex flex-wrap">
-                    {#each courses2D[currentPageIndex].filter((course) => new Date(course.date).toString() === date.toString()) as course }
-                    <CourseComponent course={course}></CourseComponent>
-                {/each}
-                </div>
-               
-        {/each }
+<div class="">
+    <div class="flex flex-col flex-wrap">
         
-    <div class="mx-auto my-5">
-        {#each courses2D as course1d,index }
-            <button class="px-2 bg-blue-100 border border-black border-1 kreon" on:click={e=> setCurrentPage(e, index)}>{index + 1}</button>
-        {/each}
-    </div>
+            {#each dates as date }
+                <div class="m-2">
+                    <DateComponent date={date}></DateComponent>
+                    <div class="flex flex-wrap w-full">
+                        {#each courses2D[currentPageIndex].filter((course) => new Date(course.date).toString() === date.toString()) as course }
+                        <CourseComponent course={course}></CourseComponent>
+                        {/each}
+                    </div>
+                </div>
+                   
+                
+                
+                
+            {/each }
+    </div> 
+    <div class="flex justify-center">
+        <div class="mx-auto my-2">
+            {#each courses2D as course1d,index }
+                <button class="px-2 bg-blue-100 border border-black border-1 kreon" on:click={e=> setCurrentPage(e, index)}>{index + 1}</button>
+            {/each}
+        </div>
+    </div>   
 </div>
+  

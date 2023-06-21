@@ -18,6 +18,7 @@
      
         import type course from "../interface/course";
         import type selectedObj from "../interface/selected";
+        import removeDuplicate from "../functions/RemoveDuplicate";
         import "@fontsource/montserrat"
         import "@fontsource/kreon"
         import Footer from "./Footer.svelte";
@@ -56,24 +57,24 @@
        
         function setSelected(e:any){
            
-           if(e.target.name === "dep"){
+           if(e.target.value === "dep"){
             selected = {
                 nom : selected.nom,
                 date: selected.date, 
-                departement: e.target.checked? "empty" : "notselected"
+                departement: "selected"
             }
            }
-           if(e.target.name === "nom"){
+           if(e.target.value === "nom"){
             selected = {
-                nom: e.target.checked? "empty" : "notselected", 
+                nom: "selected", 
                 date: selected.date, 
                 departement: selected.departement
             }
            }
-           if(e.target.name === "date"){
+           if(e.target.value === "date"){
             selected = {
                 nom: selected.nom,
-                date: e.target.checked? "empty" : "notselected", 
+                date: "selected" ,
                 departement: selected.departement
             }
            }
@@ -86,21 +87,18 @@
             switch (e.target.name){
                 case "dep": {
                     departement = parseInt(e.target.value)
-                    console.log("dep", parseInt(e.target.value) !== 0 )
-                    if (parseInt(e.target.value) !== 0) selected.departement = "selected"
+                  
                     break
                 }
                 case "nom": {
                     nom = e.target.value
-                    console.log("nom", e.target.value)
-                    if (e.target.value !== "") selected.nom = "selected"
+                  
                     break
                 }
                 
                 case "date": {
                     date = e.target.value 
-                    console.log("date", e.target.value)
-                    if (e.target.value !== "") selected.date = "selected"
+                
                     break 
                 }
                 }
@@ -115,16 +113,16 @@
 
             console.log(selected)
             if (selected.nom === "selected" ){
-                filteredCourses = filteredCourses.filter((c:course) => c.nom.toLocaleLowerCase().includes(nom.toLowerCase()))
+                filteredCourses = removeDuplicate(filteredCourses.filter((c:course) => c.nom.toLocaleLowerCase().includes(nom.toLowerCase())))
             }
     
             if (selected.departement === "selected" ){
-                filteredCourses = filteredCourses.filter((c:course) => c.departement === departement)
+                filteredCourses = removeDuplicate(filteredCourses.filter((c:course) => c.departement === departement))
             }
             
     
             if (selected.date === "selected" ){
-                filteredCourses = filteredCourses.filter((c:course) => c.date === date)
+                filteredCourses = removeDuplicate(filteredCourses.filter((c:course) => c.date === date))
             }
             
             searchOver = true
@@ -152,7 +150,7 @@
         font-family: "Kreon", sans-serif;
      }
    
-     @media (width > 1000px) {
+     @media screen and (min-width: 900px ){
 
 
         .media{
@@ -161,7 +159,7 @@
 
         }
       }
-     @media (width < 1000px){
+     @media screen and (max-width: 900px ){
           
          
 
@@ -169,11 +167,8 @@
 
     </style>
     
-
-    
-
    
-        <main class="media">
+        <main class="flex-1 media flex flex-col justify-between">
             
            {#if !searchOver}
                 <SearchComponent 
@@ -189,11 +184,11 @@
 
             {#if searchOver}
                 <div class="flex">
-                    <button on:click={e => { searchOver = false }} class="bg-black text-white kreon rounded py-3 w-2/3 m-auto my-5"> Nouvelle recherche </button>
+                    <button on:click={e => { searchOver = false }} class="bg-black text-white kreon rounded py-3 w-1/3 m-auto my-5 text-xl"> Nouvelle recherche </button>
                 </div>
                 <Paginate courses={filteredCourses}></Paginate>
             {/if}
-            <p>{searchOver}</p>
+            
             <Footer></Footer>
          </main>
    

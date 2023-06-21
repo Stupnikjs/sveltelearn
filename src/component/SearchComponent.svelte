@@ -18,28 +18,45 @@ export let selected:selectedObj
     font-family: "Kreon",sans-serif;
 }
 
+.media {
+    min-width: 20%;
+    min-height: 15vh;
+    
+}
+
+@media screen and (max-width: 900px ){
+    .media{
+        width: 90%;
+        min-height: 40vh;
+        
+    }      
+    
+
+        }
+
 </style>
 
-<div class=" w-full h-screen mx-auto p-2 my-5 media-select">
+<div class="w-1/3 p-2 media bg-gray-200 border border-black border-2">
+
     <CheckBoxes setSelected={setSelected}></CheckBoxes>
-    <div class="bg-indigo-300 mx-auto flex flex-col m-5 w-2/3 kreon media-select">
+    <div class="bg-indigo-300 mx-auto flex w-2/3 kreon media-select">
 
         {#if selected.departement !== "notselected"}
-            <fieldset class="grid grid-cols-2 p-4 media-select">
+            <fieldset class="grid grid-cols-2 p-2 media-select">
                 <label for="dep" > Departement </label>
                 <input type="number" name="dep" on:change={e => setParam(e)}>
             </fieldset>
             
          {/if}
         {#if selected.nom !== "notselected" }
-            <fieldset class="grid grid-cols-2 p-4">
+            <fieldset class="grid grid-cols-2 p-2">
                 <label for="nom"> Nom </label>
                 <input name="nom" type="text" on:change={e => setParam(e)}>
             </fieldset>
        
          {/if}
         {#if selected.date !== "notselected"}
-            <fieldset class="grid grid-cols-2 p-4">
+            <fieldset class="grid grid-cols-2 p-2">
                 <label for="date"> Date </label>
                 <input name="date" type="date" on:change={e => setParam(e)}>
             </fieldset>
