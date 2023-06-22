@@ -5,14 +5,13 @@ import "@fontsource/fira-mono"
 export let course:course 
 
 </script>
-<a class=" flex flex-col items-center  m-5  montserrat relative p-4  course rounded" href={course.link}>
+<a class=" flex flex-col items-center  m-3  montserrat relative p-2 course rounded w-52" href={course.link}>
    
-       
-        <div class="flex justify-around items-center w-2/3">
-            <span class="whitespace-nowrap kreon font-black text-xl">{course.lieu}</span>
-            <span class="ml-1 bg-gray-50 h-6 rounded px-2 fira font-black kreon  text-xl">{course.departement}</span>
+        <div class="flex justify-around items-center ">
+            <span class="whitespace-nowrap voltaire font-black text-white text-xl">{course.lieu}</span>
+            <span class="ml-1 bg-gray-50 rounded px-2 fira font-black kreon  text-xl">{course.departement}</span>
         </div>
-        <span class=" p-2 mt-5 flex items-center justify-center min-h bg-blue-100 w-2/3 text-center kreon ">{course.nom}</span>
+        <span class=" p-2 m-2 flex items-center justify-center  bg-blue-100 w-3/4 h-3/4 text-center kreon overflow-hidden">{course.nom}</span>
         
         <div class="kreon mt-2">
             {#if course.distance } 
@@ -30,13 +29,14 @@ export let course:course
     .kreon{
         font-family: "Kreon", sans-serif;
     }
-    .min-w-33{
-       width: 25%;
+  
+    .voltaire{
+        font-family: "Voltaire", sans-serif;
     }
-   
 
     .course{
-        background-color: rgb(25, 129, 89);
+        background-color: rgb(17, 37, 30);
+        height: 20vh;
     }
  
     .course:hover > span{

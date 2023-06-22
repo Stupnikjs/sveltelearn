@@ -12,7 +12,7 @@ export let courses: course[]
 
 
 $: currentPageIndex = 0; 
-$: courses2D = SliceArrayByN(courses, 30)
+$: courses2D = SliceArrayByN(courses, 10)
 $: dates = RemoveDuplicate(courses2D[currentPageIndex].map((el:course) => {return new Date(el.date)}));
 
 
@@ -30,13 +30,13 @@ function setCurrentPage(e, index:number){
    
 </style>
 
-<div class="">
-    <div class="flex flex-col flex-wrap">
+<div class="mx-20">
+    <div class=" flex flex flex-wrap">
         
             {#each dates as date }
                 <div class="m-2">
                     <DateComponent date={date}></DateComponent>
-                    <div class="flex flex-wrap w-full">
+                    <div class="flex flex-wrap">
                         {#each courses2D[currentPageIndex].filter((course) => new Date(course.date).toString() === date.toString()) as course }
                         <CourseComponent course={course}></CourseComponent>
                         {/each}

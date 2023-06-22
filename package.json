@@ -27,6 +27,7 @@
 	"type": "module",
 	"dependencies": {
 		"@fontsource/kreon": "^5.0.3",
-		"@fontsource/montserrat": "^5.0.2"
+		"@fontsource/montserrat": "^5.0.2",
+		"@fontsource/voltaire": "^5.0.3"
 	}
 }

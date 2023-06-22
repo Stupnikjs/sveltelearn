@@ -9,12 +9,7 @@
     .montserrat{
         font-family: "Montserrat", sans-serif;
     }
-    .opac{
-          background-color: rgba(83, 125, 187, 0.5);
-          border:  3px solid rgb(6, 41, 4) ;
-          color: black;    
-    }
-
+    
     .media{
         font-size: 1.4rem;
     }
@@ -29,6 +24,6 @@
 
 </style>
 
-<div class=" flex justify-center items-center h-10 text-center font-black text-indigo-400 montserrat w-1/4 mx-auto ml-5 rounded media opac skew-y-2">
+<div class=" flex justify-center items-center h-10 text-center font-black text-indigo-400 montserrat w-44 mx-auto ml-5 media ">
     {date.toLocaleDateString()}
 </div>

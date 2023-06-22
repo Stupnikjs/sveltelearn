@@ -12,6 +12,8 @@
     
     import CoursePage from "../component/CoursePage.svelte";
     import Header from "../component/Header.svelte";
+  
+    import Footer from "../component/Footer.svelte";
     import type course from "../interface/course";
     import "@fontsource/montserrat"
    
@@ -30,13 +32,15 @@
 
 }
 
-
-
     
 </style>
 
-<div class="back flex flex-col">
-    <Header></Header>
-    <CoursePage data={data}></CoursePage>
+<div class="back flex flex-col min-h-screen">
+   <Header></Header>
+   <div class="flex">
+      <CoursePage data={data}></CoursePage>
+   </div> 
+   <Footer></Footer>
+
 </div>
  
