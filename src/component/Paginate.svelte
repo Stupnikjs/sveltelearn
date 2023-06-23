@@ -13,7 +13,7 @@ export let courses: course[]
 
 $: currentPageIndex = 0; 
 $: courses2D = SliceArrayByN(courses, 10)
-$: dates = RemoveDuplicate(courses2D[currentPageIndex].map((el:course) => {return new Date(el.date)}));
+$: dates = courses2D.length > 0 ? RemoveDuplicate(courses2D[currentPageIndex].map((el:course) => {return new Date(el.date)})): [];
 
 
 function setCurrentPage(e, index:number){
@@ -27,12 +27,22 @@ function setCurrentPage(e, index:number){
       .kreon{
         font-family: "Kreon", sans-serif;
      }
-   
+     
+   /*  */
 </style>
 
-<div class="mx-20">
-    <div class=" flex flex flex-wrap">
-        
+<div>
+    
+    {#if courses2D.length === 0 }
+    <div class="m-20 text-xl">
+        <p class="kreon flex-1"> Aucun Resultat </p>
+    </div> 
+    {:else}
+    <div class="mx-10 flex flex-col justify-between min-h-screen">
+
+        <div class=" flex flex flex-wrap">
+           
+           
             {#each dates as date }
                 <div class="m-2">
                     <DateComponent date={date}></DateComponent>
@@ -40,6 +50,7 @@ function setCurrentPage(e, index:number){
                         {#each courses2D[currentPageIndex].filter((course) => new Date(course.date).toString() === date.toString()) as course }
                         <CourseComponent course={course}></CourseComponent>
                         {/each}
+                        
                     </div>
                 </div>
                    
@@ -47,13 +58,17 @@ function setCurrentPage(e, index:number){
                 
                 
             {/each }
-    </div> 
-    <div class="flex justify-center">
-        <div class="mx-auto my-2">
-            {#each courses2D as course1d,index }
-                <button class="px-2 bg-blue-100 border border-black border-1 kreon" on:click={e=> setCurrentPage(e, index)}>{index + 1}</button>
-            {/each}
-        </div>
-    </div>   
+        </div> 
+        <div class="flex justify-center">
+            <div class="mx-auto my-2">
+                {#each courses2D as course1d,index }
+                    <button class="px-2 bg-blue-100 border border-black border-1 kreon" on:click={e=> setCurrentPage(e, index)}>{index + 1}</button>
+                {/each}
+            </div>
+        </div> 
+
+    </div>
+   
+    {/if}  
 </div>
   

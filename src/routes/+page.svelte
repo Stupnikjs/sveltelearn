@@ -26,21 +26,19 @@
  
 <style>
 
-.back {
-  background-image: url("../img/favicon.png") ;
-  min-height: 100vh;  
-
-}
-
     
 </style>
 
-<div class="back flex flex-col min-h-screen">
-   <Header></Header>
-   <div class="flex">
-      <CoursePage data={data}></CoursePage>
-   </div> 
-   <Footer></Footer>
+<svelte:head>
+      <title>cours le rouquin </title>
+      <meta name="description" content="calendrier des courses à pied">
+</svelte:head>
+<div class="back flex flex-col min-h-screen box-border">
+      <Header></Header>
+      <div class="flex">
+         <CoursePage data={data}></CoursePage>
+      </div> 
+      <Footer></Footer>
 
 </div>
  

@@ -2,9 +2,10 @@
 import "@fontsource/voltaire"
 </script>
 
-<header class="noborderbox media-h voltaire bg-indigo-50">
-    <div class="relative flex items-center justify-center items-center p-1 mx-auto media-container">   
-       
+<header class=" voltaire bg-indigo-50 media">
+    <div class="relative flex items-center justify-around items-center p-1 mx-auto media-container text-2xl">   
+       <a href="/" class="bg-yellow-50 p-2">Blog</a>
+       <a href="/" class="bg-yellow-50 p-2">A propos</a>
     </div>
     
 </header>
@@ -15,34 +16,16 @@ import "@fontsource/voltaire"
         font-family: "Voltaire", sans-serif;
     }
    
-    .media-h{
-                margin: 0 0 0 0;
-                height: 10vh;
-                display: flex;
-                justify-content: center;
-           
-            }
     
-    .media-container{
-        width: 50%;
-        
+    .media{
+        width: 100vw;
     }
    
     @media screen and (max-width: 900px ) {
             
-            .noborderbox{
-                box-sizing: content-box;
-                
-            }
-            .media-h{
-                height: 10vh;
-            }
+            
+            
            
-           
-           .media-container{
-
-            width: 90%;
-           }
    
     }
 </style>

@@ -10,7 +10,7 @@
   
 </style>
 
-<div class="w-full bg-indigo-400 kreon border border-black border-4 flex justify-around h-44">
+<div class="w-full bo bg-indigo-400 kreon border border-black border-4 flex justify-around h-44 box-border">
    
    <div class="flex items-center">
         Développé avec Svelte
